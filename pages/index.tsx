@@ -7,7 +7,6 @@ import Header from "components/Header";
 import HeaderBanner from "components/HeaderBanner";
 
 import PostCardContainer from "components/PostCardContainer";
-import PostCard from "components/PostCard";
 
 import { sanityClient } from "sanity";
 

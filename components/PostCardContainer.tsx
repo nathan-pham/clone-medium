@@ -21,6 +21,7 @@ const postCategories = [
     "Politics",
     "Health",
 ];
+
 const PostCardContainer = ({ posts }: PostCardContainerProps) => {
     return (
         <section className="flex flex-col-reverse px-6 md:px-40 lg:grid lg:grid-cols-5 lg:gap-16">

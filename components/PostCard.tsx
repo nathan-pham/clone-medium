@@ -3,7 +3,7 @@ import type { Post } from "typings";
 import Link from "next/link";
 import { urlFor } from "sanity";
 
-const getReadingTime = (body: object[]) => {
+const getReadingTime = (body: object[]): number => {
     return (
         Math.round(
             body
@@ -51,7 +51,7 @@ const PostCard = (props: Post) => {
                 <img
                     src={urlFor(props.mainImage).url()}
                     alt={`${props.title}'s Featured Image`}
-                    className="h-30 w-48 object-cover"
+                    className="h-30 w-52 object-cover"
                 />
             </article>
         </Link>
