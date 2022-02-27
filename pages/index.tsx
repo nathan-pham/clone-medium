@@ -1,10 +1,21 @@
 import type { NextPage } from "next";
+import type { Post } from "typings";
+
 import Head from "next/head";
 
 import Header from "components/Header";
 import HeaderBanner from "components/HeaderBanner";
 
-const Home: NextPage = () => {
+import PostCardContainer from "components/PostCardContainer";
+import PostCard from "components/PostCard";
+
+import { sanityClient } from "sanity";
+
+interface Props {
+    posts: Post[];
+}
+
+const Home: NextPage<Props> = ({ posts }) => {
     return (
         <div>
             <Head>
@@ -15,9 +26,39 @@ const Home: NextPage = () => {
             <Header />
             <HeaderBanner />
 
-            {/* Posts */}
+            <PostCardContainer>
+                {posts.map((post) => (
+                    <PostCard {...post} key={post._id} />
+                ))}
+            </PostCardContainer>
         </div>
     );
 };
 
 export default Home;
+
+export const getServerSideProps = async () => {
+    const query = `
+        *[_type == "post"] {
+            _id,
+            _createdAt,
+            title,
+            mainImage,
+            description,
+            slug,
+            body,
+            author -> {
+                name,
+                image
+            }
+        }
+    `;
+
+    const posts = await sanityClient.fetch(query);
+
+    return {
+        props: {
+            posts,
+        },
+    };
+};
