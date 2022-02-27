@@ -3,7 +3,7 @@ import type { Post } from "typings";
 import Link from "next/link";
 import { urlFor } from "sanity";
 
-const calculateReadingTime = (body: object[]) => {
+const getReadingTime = (body: object[]) => {
     return (
         Math.round(
             body
@@ -14,15 +14,19 @@ const calculateReadingTime = (body: object[]) => {
     );
 };
 
-const PostCard = (props: Post) => {
-    const postDate = new Date(props._createdAt);
+const getFormattedDate = (_createdAt: string): string => {
+    const postDate = new Date(_createdAt);
     const formattedDate = `${postDate.toLocaleString("default", {
         month: "short",
     })} ${postDate.getDate()}`;
 
+    return formattedDate;
+};
+
+const PostCard = (props: Post) => {
     return (
         <Link href={`/post/${props.slug.current}`}>
-            <article className="mt-16 flex w-full justify-between">
+            <article className="mt-16 flex w-full cursor-pointer justify-between gap-4">
                 <div>
                     <div className="flex items-center">
                         <img
@@ -39,9 +43,9 @@ const PostCard = (props: Post) => {
                     <p className="text-gray-600">{props.description}</p>
 
                     <div className="mt-2 flex text-sm text-gray-600">
-                        <span>{formattedDate}</span>
+                        <span>{getFormattedDate(props._createdAt)}</span>
                         <span className="mx-2">·</span>
-                        <span>{calculateReadingTime(props.body)} min read</span>
+                        <span>{getReadingTime(props.body)} min read</span>
                     </div>
                 </div>
                 <img

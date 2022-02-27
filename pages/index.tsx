@@ -26,11 +26,9 @@ const Home: NextPage<Props> = ({ posts }) => {
             <Header />
             <HeaderBanner />
 
-            <PostCardContainer>
-                {posts.map((post) => (
-                    <PostCard {...post} key={post._id} />
-                ))}
-            </PostCardContainer>
+            <PostCardContainer posts={posts} />
+
+            <div className="h-20"></div>
         </div>
     );
 };
