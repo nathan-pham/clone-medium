@@ -8,7 +8,7 @@ import HeaderBanner from "components/HeaderBanner";
 
 import PostCardContainer from "components/PostCardContainer";
 
-import { sanityClient } from "sanity";
+import { sanityClient } from "utils/sanity";
 
 interface Props {
     posts: Post[];

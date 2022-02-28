@@ -18,7 +18,7 @@ const HeaderIcon = ({ type }: HeaderIconProps) => {
     );
 };
 
-const Header = () => {
+const PostHeader = () => {
     return (
         <header className="fixed left-0 top-0 flex h-screen w-24 flex-col items-center justify-center gap-8 border-r border-r-gray-300 text-gray-400">
             <img
@@ -38,4 +38,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default PostHeader;

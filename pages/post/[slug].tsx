@@ -1,18 +1,23 @@
 import type { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import type { Post } from "typings";
 
-import { sanityClient } from "sanity";
+import { sanityClient } from "utils/sanity";
 
 import PostHeader from "components/post/PostHeader";
+import PostContent from "components/post/PostContent";
+import PostSimilar from "components/post/PostSimilar";
 
 interface PostPageProps {
     post: Post;
 }
 
-const PostPage: NextPage<PostPageProps> = () => {
+const PostPage: NextPage<PostPageProps> = ({ post }) => {
+    console.log(post);
     return (
         <>
             <PostHeader />
+            <PostContent post={post} />
+            <PostSimilar author={post.author} />
         </>
     );
 };
@@ -52,7 +57,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             body,
             author -> {
                 name,
-                image
+                image,
+                bio
             }
         }
     `;
