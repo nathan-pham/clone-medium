@@ -1,6 +1,6 @@
 const HeaderBanner = () => {
     return (
-        <div className="relative overflow-hidden border-b border-b-black bg-yellow-400 py-8 px-6 md:px-40">
+        <div className="relative overflow-hidden border-b border-b-black bg-yellow-400 py-8 px-6 md:px-20 xl:px-40">
             <img
                 src="medium-quotes.png"
                 className="absolute right-0 bottom-0 z-0 w-96 object-contain lg:right-52"

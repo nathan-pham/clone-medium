@@ -24,7 +24,7 @@ const postCategories = [
 
 const PostCardContainer = ({ posts }: PostCardContainerProps) => {
     return (
-        <section className="flex flex-col-reverse px-6 md:px-40 lg:grid lg:grid-cols-5 lg:gap-16">
+        <section className="flex flex-col-reverse px-6 md:px-20 lg:grid lg:grid-cols-5 lg:gap-16 xl:px-40">
             <div className="lg:col-span-3">
                 {posts.map((post) => (
                     <PostCard {...post} key={post._id} />
