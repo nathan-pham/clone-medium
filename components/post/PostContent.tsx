@@ -1,3 +1,5 @@
+import PortableText from "react-portable-text";
+
 import { Post } from "typings";
 import { getFormattedDate, getReadingTime } from "utils/post";
 import { urlFor } from "utils/sanity";
@@ -8,10 +10,26 @@ interface PostContentProps {
     post: Post;
 }
 
+interface PostBodyProps {
+    body: object[];
+}
+
+const PostBody = ({ body }: PostBodyProps) => {
+    return (
+        <div className="prose prose-xl prose-zinc font-serif">
+            <PortableText
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
+                content={body}
+            />
+        </div>
+    );
+};
+
 const PostContent = ({ post }: PostContentProps) => {
     return (
-        <main className="px-24">
-            <div className="mx-auto max-w-7xl px-0 pt-24 lg:mx-0 lg:w-[65vw] lg:max-w-none lg:px-[10vw] lg:pt-16">
+        <div className="px-24">
+            <main className="mx-auto max-w-7xl px-0 pt-24 lg:mx-0 lg:w-[65vw] lg:max-w-none lg:px-[10vw] lg:pt-16">
                 <PostAuthorSummary
                     image={post.author.image}
                     name={post.author.name}
@@ -25,10 +43,14 @@ const PostContent = ({ post }: PostContentProps) => {
 
                 <img
                     src={urlFor(post.mainImage).url()}
-                    className="mt-8 w-full"
+                    className="my-8 w-full max-w-full"
                 />
-            </div>
-        </main>
+
+                <PostBody body={post.body} />
+
+                <div className="h-20"></div>
+            </main>
+        </div>
     );
 };
 

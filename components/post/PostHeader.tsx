@@ -38,7 +38,7 @@ const PostHeader = () => {
             </header>
 
             {/* This is probably shit for SEO and accessibility but we're making another header element anyways */}
-            <header className="fixed left-0 top-0 flex w-full items-center justify-between py-4 px-6 shadow-md lg:hidden">
+            <header className="fixed left-0 top-0 flex w-full items-center justify-between bg-white py-4 px-6 shadow-md lg:hidden">
                 <img
                     src="/medium-single-logo.svg"
                     className="w-10 object-cover"

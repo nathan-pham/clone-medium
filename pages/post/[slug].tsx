@@ -12,7 +12,6 @@ interface PostPageProps {
 }
 
 const PostPage: NextPage<PostPageProps> = ({ post }) => {
-    console.log(post);
     return (
         <>
             <PostHeader />
@@ -75,5 +74,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         props: {
             post,
         },
+        revalidate: 60, // update cache every minute
     };
 };
