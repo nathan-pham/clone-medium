@@ -17,3 +17,13 @@ export const getFormattedDate = (_createdAt: string): string => {
 
     return formattedDate;
 };
+
+export const daysAgo = (_createdAt: string): number => {
+    const postDate = new Date(_createdAt);
+    const today = new Date();
+
+    const diffTime = Math.abs(today.getTime() - postDate.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays;
+};

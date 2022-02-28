@@ -1,30 +1,14 @@
-import PortableText from "react-portable-text";
-
 import { Post } from "typings";
 import { getFormattedDate, getReadingTime } from "utils/post";
 import { urlFor } from "utils/sanity";
 
 import PostAuthorSummary from "./PostAuthorSummary";
+import PostResponses from "./PostResponses";
+import PostBody from "./PostBody";
 
 interface PostContentProps {
     post: Post;
 }
-
-interface PostBodyProps {
-    body: object[];
-}
-
-const PostBody = ({ body }: PostBodyProps) => {
-    return (
-        <div className="prose prose-xl prose-zinc font-serif">
-            <PortableText
-                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
-                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
-                content={body}
-            />
-        </div>
-    );
-};
 
 const PostContent = ({ post }: PostContentProps) => {
     return (
@@ -48,7 +32,12 @@ const PostContent = ({ post }: PostContentProps) => {
 
                 <PostBody body={post.body} />
 
-                <div className="h-20"></div>
+                <PostResponses
+                    _id={post._id}
+                    responses={post.responses || []}
+                />
+
+                <div className="h-10"></div>
             </main>
         </div>
     );

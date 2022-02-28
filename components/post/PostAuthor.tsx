@@ -12,8 +12,6 @@ const PostAuthor = ({ name, image, bio }: PostAuthorProps) => {
         .map((child: any) => child?.children[0].text)
         .join("\n");
 
-    console.log(formattedBio);
-
     return (
         <div className="mt-10">
             <img

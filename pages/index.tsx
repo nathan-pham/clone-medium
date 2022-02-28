@@ -27,7 +27,7 @@ const Home: NextPage<Props> = ({ posts }) => {
 
             <PostCardContainer posts={posts} />
 
-            <div className="h-20"></div>
+            <div className="h-10"></div>
         </div>
     );
 };

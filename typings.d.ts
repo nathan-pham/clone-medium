@@ -4,6 +4,20 @@ export interface Author {
     bio: object[];
 }
 
+export interface Comment {
+    _createdAt: string;
+    _id: string;
+
+    approved: boolean;
+    name: string;
+    response: string;
+
+    post: {
+        _ref: string;
+        _type: string;
+    };
+}
+
 export interface Post {
     _id: string;
     _createdAt: string;
@@ -23,4 +37,5 @@ export interface Post {
     };
 
     body: object[];
+    responses?: Comment[];
 }

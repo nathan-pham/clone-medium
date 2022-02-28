@@ -7,6 +7,8 @@ import {
     PencilOutline,
 } from "react-ionicons";
 
+import IconTitle from "../IconTitle";
+
 interface HeaderIconProps {
     type: Function;
 }
@@ -32,14 +34,25 @@ const PostHeader = () => {
                     </a>
                 </Link>
 
-                <HeaderIcon type={HomeOutline} />
-                <HeaderIcon type={NotificationsOutline} />
-                <HeaderIcon type={BookmarksOutline} />
-                <HeaderIcon type={DocumentOutline} />
+                <IconTitle title="Home">
+                    <HeaderIcon type={HomeOutline} />
+                </IconTitle>
+                <IconTitle title="Notifications">
+                    <HeaderIcon type={NotificationsOutline} />
+                </IconTitle>
+                <IconTitle title="Lists">
+                    <HeaderIcon type={BookmarksOutline} />
+                </IconTitle>
+
+                <IconTitle title="Stories">
+                    <HeaderIcon type={DocumentOutline} />
+                </IconTitle>
 
                 <span className="w-[22px] border-b border-b-gray-300"></span>
 
-                <HeaderIcon type={PencilOutline} />
+                <IconTitle title="Write">
+                    <HeaderIcon type={PencilOutline} />
+                </IconTitle>
             </header>
 
             {/* This is probably shit for SEO and accessibility but we're making another header element anyways */}

@@ -58,7 +58,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 name,
                 image,
                 bio
-            }
+            },
+            "responses": *[_type == "comment" && post._ref == ^._id && approved == true]
         }
     `;
 
