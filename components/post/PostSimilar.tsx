@@ -13,7 +13,7 @@ const PostSimilar = ({ author }: PostSimilarProps) => {
     console.log(author);
 
     return (
-        <aside className="fixed right-0 top-0 h-screen w-[calc(35vw-6rem)] border-l border-l-gray-300 py-10 px-10">
+        <aside className="fixed right-0 top-0 hidden h-screen w-[calc(35vw-6rem)] border-l border-l-gray-300 px-8 py-10 lg:block">
             <div className="flex items-center gap-6">
                 <a
                     href="#"
